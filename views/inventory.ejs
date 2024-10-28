@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="../public/css/style.css">
+
+
+</head>
+<body>
+<form action="/inventory" method="POST">
+    <label> filter by price </label>
+    <select name="price" required>
+        <option value="all"> All </option>
+        <option value="under 5000"> under 5000 </option>
+        <option value="5000 - 10000"> 5000 - 10000 </option>
+        <option value="10000 - 20000"> 10000 - 20000 </option>
+        <option value="20000 - 30000"> 20000 - 30000 </option>
+        <option value="30000 - 40000"> 30000 - 40000 </option>
+        <option value="40000 - 50000"> 40000 - 50000 </option>
+        <option value="50000 - 60000"> 50000 - 60000 </option>
+        <option value="60000 - 100000"> 60000 - 100000 </option>
+        <option value="100000 ++"> 100000 ++ </option>
+    </select>
+    <button type="submit"> search</button>
+</form>
+
+
+<%if(use_data){%>
+    <ul>
+        <% use_data.forEach(data => { %>
+            <div class="div1">
+            <li> <a href="/buycar/<%= data.car_name %>">Visit here</a>
+                <p>Car Name: <%= data.car_name %></p>
+                <p>Model: <%= data.model %></p>
+                <p>Year: <%= data.car_year %></p>
+                <p>Company: <%= data.company %></p>
+                <p>Colour: <%= data.colour %></p>
+                <p>VIN No: <%= data.vin_no %></p>
+                <p>Price: <%= data.car_price %></p>
+                <p>Engine: <%= data.engine %></p>
+                <p>Type: <%= data.type %></p>
+                <p>Pre-owned: <%= data.pre_owned %></p>
+                <p>Fuel Type: <%= data.fuel_type %></p>
+                <p>Description: <%= data.extra %></p>
+                <p>Sale: <%= data.sale %></p>
+                <p>Financing: <%= data.financing %></p>
+                <p>Sale: <%= data.sale %></p>
+
+                <a href="/finance/<%= data._id %>">Check Emi</a>
+                <img src="<%= data.path %>" alt="Car Image">
+                <% if(role == "admin"){ %>
+                    <a href="/update/<%= data._id %>" > Update </a>
+                    <p>Updated By: <%= data.updated_by %></p>
+                    <p>Posted By: <%= data.posted_by %></p>
+                    <a href="/delete/<%= data._id %>"> Delete </a>
+                    <% } else if(role == "salesman") { %>
+                        <a href="/update/<%= data._id %>">Update</a>
+                        <p>Updated By: <%= data.updated_by %></p>
+                        <p>Last Updated: <%= data.updated_last %></p>
+                    <% } %>
+            
+                <% }) %>
+            </li>
+    </ul>
+
+<% }else{%>
+    <p> no data found </p>
+<% }%>
+
+<!-- <a href="/search" > search </a> -->
+
+<% if(role == "admin"){ %>
+<a href="/add"> create </a>
+<a href="profiles"> profiles </a>
+<% } %>
+
+</body>
+</html>

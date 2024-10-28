@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Calculator</title>
+ 
+</head>
+<body>
+
+    <form action="/finance/<%= datas._id %>" method="POST">
+        <p class="car-price">Car Price: <%= datas.car_price %></p>
+        
+        <label for="rate">Rate of Interest:</label>
+        <input type="number" id="rate" name="rate" required maxlength="2" >
+        <p class="note">Interest varies from person to person.</p>
+        
+        <label for="time">Time (in years):</label>
+        <input type="number" id="time" name="time"required maxlength="2" >
+        
+        <button type="submit">Calculate</button>
+
+       <%  if(emi>0){%>
+            <p class="result">Monthly payment for <%= datas.car_name %> will be <%= emi %> with <%= rate %>% for <%= time %> years.</p>
+        <% } %>
+    </form>
+</body>
+</html>

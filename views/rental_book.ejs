@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Car details </title>
+</head>
+<body>
+    <p>Car Name: <%= specific_car.car_name %></p>
+    <p>Company: <%= specific_car.company %></p>
+    <p>Car Year: <%= specific_car.car_year %></p>
+    <p>Model: <%= specific_car.model %></p>
+    <p>Colour: <%= specific_car.colour %></p>
+    <p>Rent Per Hour: <%= specific_car.rent_per_hour %></p>
+    <p>Engine: <%= specific_car.engine %></p>
+    <p>Type: <%= specific_car.type %></p>
+    <p>Fuel Type: <%= specific_car.fuel_type %></p>
+    <p>Extra: <%= specific_car.extra %></p>
+
+    <h2> Wanna rent this car? fill up the form and you will be contacted via phone regarding the process </h2>
+ 
+
+    <form action="/rental_book" method="POST">
+        <input type="hidden" name="car_name" value=" <%= specific_car.car_name %>">
+        <input type="hidden" name="company" value=" <%= specific_car.company %>">
+        <input type="hidden" name="car_year" value=" <%= specific_car.car_year%>">
+        <input type="hidden" name="model" value=" <%= specific_car.model%>">
+        <input type="hidden" name="colour" value=" <%= specific_car.colour%>">
+        <input type="hidden" name="rent_per_hour" value=" <%= specific_car.rent_per_hour%>">
+        <input type="hidden" name="type" value=" <%= specific_car.type%>">
+        <input type="hidden" name="fuel_type" value=" <%= specific_car.fuel_type%>">
+        <input type="hidden" name="extra" value=" <%= specific_car.extra%>">
+        <input type="hidden" name="engine" value=" <%= specific_car.engine%>">
+        <input type="hidden" name="rent_or_inventory" value="rent">
+        <input type="hidden" name="booked" value="yes">
+ 
+<label> name </label>
+<input type="text" name="booked_by" required>
+<label> phone number </label>
+<input type="text" name="phone_no" required maxlength="10">
+
+<button type="submit"> book </button>
+
+    </form>
+    
+</body>
+</html>

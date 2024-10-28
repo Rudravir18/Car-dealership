@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealership Car Listing</title>
+  
+</head>
+<body>
+    <div class="container">
+        <div class="car-details">
+            <h2><%= specific_car.car_name %> - <%= specific_car.company %></h2>
+            <p>Model: <%= specific_car.model %></p>
+            <p>Year: <%= specific_car.car_year %></p>
+            <p>Colour: <%= specific_car.colour %></p>
+            <p>VIN No: <%= specific_car.vin_no %></p>
+            <p>Price: <%= specific_car.car_price %></p>
+            <p>Engine: <%= specific_car.engine %></p>
+            <p>Type: <%= specific_car.type %></p>
+            <p>Pre-owned: <%= specific_car.pre_owned %></p>
+            <p>Fuel Type: <%= specific_car.fuel_type %></p>
+            <p>Description: <%= specific_car.extra %></p>
+            <p>Financing: <%= specific_car.financing %></p>
+            <p>Sale: <%= specific_car.sale %></p>
+            <a href="/finance/<%= specific_car._id %>">Check Emi</a>
+
+            <img src="/images/<%= specific_car.filename %>" alt="car image">
+            <!-- <img src="/images/1711840696447-tesla.jpg" alt="Tesla"> -->
+
+        </div>
+
+        <div class="appointment-form">
+            <h3>Interested in buying this car? Book an appointment now:</h3>
+            <form action="/book" method="POST">
+                <input type="hidden" name="car_name" value="<%= specific_car.car_name %>">
+                <input type="hidden" name="company" value="<%= specific_car.company %>">
+                <input type="hidden" name="car_year" value="<%= specific_car.car_year%>">
+                <input type="hidden" name="model" value="<%= specific_car.model%>">
+                <input type="hidden" name="colour" value="<%= specific_car.colour%>">
+                <input type="hidden" name="rent_per_hour" value="<%= specific_car.rent_per_hour%>">
+                <input type="hidden" name="type" value="<%= specific_car.type%>">
+                <input type="hidden" name="fuel_type" value="<%= specific_car.fuel_type%>">
+                <input type="hidden" name="extra" value="<%= specific_car.extra%>">
+                <input type="hidden" name="engine" value="<%= specific_car.engine%>">
+                <input type="hidden" name="rent_or_inventory" value="inventory">
+                <input type="hidden" name="booked" value="yes">
+     
+                <label for="booked_by">Name:</label>
+                <input type="text" id="booked_by" name="booked_by" required>
+                <label for="phone_no">Phone Number:</label>
+                <input type="number" id="phone_no" name="phone_no"required maxlength="10">
+
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Admin Authorization</title>
+</head>
+<body>
+    <form action="/check_admin" method="POST">
+        <label>Re-enter the username you want to grant admin privileges</label>
+        <input type="text" name="username" required>
+        <label>Enter admin code</label>
+        <input type="password" name="admin_code" placeholder="emailed to you" required>
+        <button type="submit">Check Authorization</button>
+    </form>
+</body>
+</html>

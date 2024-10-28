@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload role </title>
+</head>
+<body>
+    <form action="/update_role/<%= profile._id%>" method="POST">
+<label> Update role :</label>
+<select name="role" required>
+    <option value="user"> User </option>
+    <option value="salesman"> Salesman </option>
+    <option value="admin"> Admin </option>
+</select>
+<button type="submit"> Update role </button>
+    </form>
+</body>
+</html>

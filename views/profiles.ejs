@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% profiles.forEach(profile => { %>
+        <li>
+            
+            <p>Username: <%= profile.username %></p>
+            <p>Designation: <%= profile.role %></p>
+            <a href="/update_role/<%= profile._id %>" > update role </a>
+
+        </li>
+    <% }) %>
+
+    <!-- <% if(profiles.username == "harsh"){ %>
+        <p> he is a good boy </p>
+   <%  }
+    else { %>
+        <p> he is not a good boy </p>
+ <%   } %> -->
+
+ <a href="/search" > search </a>
+<a href="/finance" > finance </a>
+
+<a href="/add"> create </a>
+<a href="/signup"> signup </a>
+<a href="/login"> login </a>
+<a href="/services"> service </a>
+<a href="/support"> support  </a>
+<a href="profiles"> profiles </a>
+</body>
+</html>

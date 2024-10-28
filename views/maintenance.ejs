@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= given_category%></title>
+</head>
+<body>
+
+    <form action="/services/<%= given_category%>" method="POST"> 
+<label>Car Name:</label>
+<input type="text" name="car_name" >
+<br>
+<label>  Car year : </label>
+<input type="number" name="car_year" >
+<br> 
+<label>Model:</label>
+<input type="text" name="model" >
+<br>
+<label>Fuel Type:</label>
+<input type="text" name="fuel_type" >
+<br>
+<label>Your name :</label>
+<input type="text" name="booked_by" >
+<br>
+<label>Phone Number:</label>
+<input type="number" name="phone_no" >
+<br>
+<input type="hidden" name="category" value="<%= given_category%>">
+<button type="submit" > Book an appointment </button>
+    </form>
+</body>
+</html>

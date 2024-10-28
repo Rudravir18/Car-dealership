@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav id="navbar">
+        <ul >
+            <li ><a class="item" href="/"> Home </a></li>
+            <li >                
+                <div class="dropdown">
+                <a class="item" href="/services"> Services</a>
+                <div class="dropdown-content">
+                    <a href="/services/oil_change"> Oil Change Booking </a>
+                    <a href="/services/tire_change">Tire Change Booking </a>
+                    <a href="/services/safety_inspection"> Safety INspection  Book </a>
+                    <a href="/parts"> Parts </a>
+                </div>
+            </div></li>
+            <li><a class="item"  href="/rental"> rent a car </a></li>
+            <li class="dropdown">
+                <a class="item" href="/inventory">Inventory</a>
+                <div class="dropdown-content">
+                  <a href="/pre_owned"> pre owned </a>
+                  <a href="/inventory/diesel"> diesel </a>
+                  <a href="/inventory/petrol"> petrol </a>
+                  <a href="/inventory/electric"> electric </a>
+                  <a href="/inventory/hybrid"> hybrid </a>
+                  <a href="/inventory/sedan"> Sedan </a>
+                  <a href="/inventory/mid_suv"> Mid Size Suv </a>
+                  <a href="/inventory/compact_suv"> Compact Suv </a>
+                  <a href="/inventory/coupe"> Coupe </a>
+                  <a href="/inventory/station_wagon"> Station Wagon </a>
+                  <a href="/inventory/hatchback"> Hatchback </a>
+                  <a href="/inventory/AWD"> AWD (All-Wheel Drive) </a>
+                  <a href="/inventory/FWD"> FWD (Front-Wheel Drive) </a>
+                  <a href="/inventory/4x4"> 4x4 </a>
+                  <a href="/inventory/RWD"> RWD (Rear-Wheel Drive) </a>
+                  
+                  
+            <li><form id="form1" action="/search" method="POST">
+                <input type="text" name="search" required> 
+                <button  type="submit"> search </button>
+            </form></li>
+            <%  if (logged_in) { %>
+            <% if(role){  %>
+                <a class="item" href="/your_profile">your profile  </a>
+            <% if(role == "admin"){  %>
+                <div class="dropdown">
+                    <a class="item" href="#">Admin Login</a>
+                    <div class="dropdown-content">
+                        <a href="/add">Add Inventory</a>
+                        <a href="/rental_add">Add Rental </a>
+                        <a href="/profile"> All User Profile</a>
+                    </div>
+                </div>
+            <% } %>
+            <% } %>
+               
+                <% }else { %>
+                    <p class="sign"> <a href="/login"> login</a></p>
+                    <p class="sign"> <a href="/signup"> sign up </a></p>
+                    <% } %>
+           
+        
+            <%  if (logged_in) { %>
+                <p class="sign" > <a href="/logout"> logout </a></p>
+                <% } %>
+               
+        </ul> 
+    </nav>
+    <p> welcome to our dealership </p>
+    <ul>
+        <% if(use_data) { %>
+            <% use_data.forEach(data => { %>
+            <li> <a href="/buycar/<%= data._id %>">Visit here</a>
+                <p>Car Name: <%= data.car_name %></p>
+                <p>Model: <%= data.model %></p>
+                <p>Year: <%= data.car_year %></p>
+                <p>Company: <%= data.company %></p>
+                <p>Colour: <%= data.colour %></p>
+                <p>VIN No: <%= data.vin_no %></p>
+                <p>Price: <%= data.car_price %></p>
+                <p>Engine: <%= data.engine %></p>
+                <p>Type: <%= data.type %></p>
+                <p>Pre-owned: <%= data.pre_owned %></p>
+                <p>Fuel Type: <%= data.fuel_type %></p>
+                <p>Description: <%= data.extra %></p>
+                <p>Financing: <%= data.financing %></p>
+                <p>Sale: <%= data.sale %></p>
+                <a href="/finance/<%= data._id %>">Check Emi</a>
+                <img src="/images/<%= data.filename %>" alt="Car Image">
+                
+                <% if(role == "admin") { %>
+                    <!-- Admin controls -->
+                <% } else if(role == "salesman") { %>
+                    <!-- Salesman controls -->
+                <% } %>
+            </li>
+            <% }) %>
+        <% } else { %>
+            <p> no data found</p>
+        <% } %>
+    </ul>
+    <p> <a href="/rental"> rent a car  </a></p>
+    <p> <a href="/signup"> sign in   </a></p>
+    <p> <a href="/login">login </a></p>
+    <p> <a href="/services">service </a></p>
+    <p> <a href="/search">search </a></p>
+    <p> <a href="/support">support </a></p>
+    <p> <a href="/parts">parts </a></p>
+    <p> <a href="/profile">profile </a></p>
+        
+    
+    </body>
+    </html>

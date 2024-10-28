@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add More Inventory</title>
+    <link rel="stylesheet" type="text/css" href="/images/styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <form action="/add" method="post" enctype="multipart/form-data">
+            <label>Car Name:</label>
+            <input type="text" name="car_name" required>
+            <br>
+            <label>Company:</label>
+            <input type="text" name="company" required>
+            <br> 
+            <label>Car Year:</label>
+            <select name="car_year" required>
+                <% for (let year = 2000; year <= 2024; year++) { %>
+                    <option value="<%= year %>"><%= year %></option>
+                <% } %>
+            </select>
+            <br> 
+            <label>Model:</label>
+            <select name="model" required>
+                <option value="AWD">AWD (All-Wheel Drive)</option>
+                <option value="FWD">FWD (Front-Wheel Drive)</option>
+                <option value="4x4">4x4</option>
+                <option value="RWD">RWD (Rear-Wheel Drive)</option>
+            </select>
+            <br>
+            <label>Color:</label>
+            <input type="text" name="colour" required>
+            <br>
+            <label>Vin Number:</label>
+            <input type="number" name="vin_no" required>
+            <br>
+            <label>Car Price:</label>
+            <input type="number" name="car_price" required>
+            <br> 
+            <label>Engine:</label>
+            <input type="text" name="engine" required>
+            <br> 
+            <label>Vehicle Type:</label>
+            <select name="type" required>
+                <option value="sedan">Sedan</option> 
+                <option value="full_suv">Full Size SUV</option> 
+                <option value="mid_suv">Mid Size SUV</option> 
+                <option value="compact_suv">Compact SUV</option> 
+                <option value="coupe">Coupe</option> 
+                <option value="station_wagon">Station Wagon</option>
+                <option value="hatchback">HatchBack</option>
+            </select>
+            <br>
+            <label>Pre-owned:</label>
+            <select name="pre_owned" required>
+                <option value="yes">Yes</option> 
+                <option value="no">No</option>  
+            </select>
+            <br>
+            <label>Fuel Type:</label>
+            <select name="fuel_type" required>
+                <option value="diesel">Diesel</option> 
+                <option value="hybrid">Hybrids</option> 
+                <option value="plugin_hybrid">Plugin Hybrids</option> 
+                <option value="electric">Electric</option> 
+                <option value="petrol">Petrol</option> 
+            </select>
+            <br>
+            <label>Additional Comments:</label>
+            <input type="text" name="extra">
+            <br>
+            <label>Add Picture:</label>
+            <input type="file" name="file" required>
+            <br>
+            <label>Financing:</label>
+            <select name="financing" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br>
+            <input type="hidden" name="sale" value="For sale">
+            <button type="submit">Upload Data</button>
+        </form>
+    </div>
+</body>
+</html>
